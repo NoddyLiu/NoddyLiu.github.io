@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Noddy">
 <meta property="og:description" content="前言：在项目开发中，有时候需要引用github中的Gradle project作为library，一方面作者没有提供相应的jar文件导入，另一方面我们也可能需要在该library项目中修改相应的代码以适应我们的项目。本文就是说明一下如何把clone的代码导入到我们的项目中使用。
 譬如我需要在项目中引用openCVLibrary2410来做图像处理，clone下来的opencv项目是这样的（可能">
-<meta property="og:updated_time" content="2016-05-16T07:16:32.179Z">
+<meta property="og:updated_time" content="2016-05-16T07:23:15.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio导入github项目作为library（非jar文件）">
 <meta name="twitter:description" content="前言：在项目开发中，有时候需要引用github中的Gradle project作为library，一方面作者没有提供相应的jar文件导入，另一方面我们也可能需要在该library项目中修改相应的代码以适应我们的项目。本文就是说明一下如何把clone的代码导入到我们的项目中使用。
@@ -76,7 +76,7 @@
 						<li>Tags</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -93,7 +93,7 @@
 				        
 							<li><a href="/archives">所有文章</a></li>
 				        
-							<li><a href="/">Android</a></li>
+							<li><a href="/categories/Android">Android</a></li>
 				        
 							<li><a href="/categories/杂碎">杂碎</a></li>
 				        
@@ -155,7 +155,7 @@
 		        
 					<li><a href="/archives">所有文章</a></li>
 		        
-					<li><a href="/">Android</a></li>
+					<li><a href="/categories/Android">Android</a></li>
 		        
 					<li><a href="/categories/杂碎">杂碎</a></li>
 		        
@@ -228,20 +228,26 @@
 </code></pre></blockquote>
 <p>然后按下面步骤导入到我们的项目中：</p>
 <ol>
-<li>把openCVLibrary2410(也就是需要导入的project)放在自己的项目(这里比如叫MyProject)同一文件夹下</li>
+<li>把openCVLibrary2410(也就是需要导入的project)放在自己的项目(这里比如叫MyProject)同一文件夹下<br><br></li>
 <li>在app module的build.gradle中添加(自己修改相应的项目名称)<blockquote>
-<pre><code>dependencies { compile project(&apos;:openCVLibrary2410&apos;) }
-</code></pre></blockquote>
+<pre><code>dependencies 
+{ 
+compile project(&apos;:openCVLibrary2410&apos;) 
+}
+</code></pre><p><br></p>
+</blockquote>
 </li>
 <li>在settings.gradle下添加修改为<blockquote>
 <pre><code>include &apos;:app&apos;, &apos;:openCVLibrary2410&apos; 
 project(&apos;:openCVLibrary2410&apos;).projectDir = new File(settingsDir, &apos;../openCVLibrary2410&apos;)
-</code></pre></blockquote>
+</code></pre><p><br></p>
+</blockquote>
 </li>
-<li>Tools–Android–Sync Project with Gradle Files</li>
+<li>Tools–Android–Sync Project with Gradle Files<br><br></li>
 <li>此时了openCVLibrary2410的build.gradle，在此文件头部修改 <blockquote>
 <pre><code>apply plugin: &apos;com.android.library&apos;
-</code></pre></blockquote>
+</code></pre><p><br></p>
+</blockquote>
 </li>
 <li>再运行一次Sync Project with Gradle Files，ok，导入类项目完成</li>
 </ol>
