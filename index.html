@@ -72,7 +72,7 @@
 						<li>Tags</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -168,6 +168,88 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-2016-05-27-decompile-apk" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/27/2016-05-27-decompile-apk/" class="article-date">
+  	<time datetime="2016-05-27T08:40:11.000Z" itemprop="datePublished">2016-05-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/27/2016-05-27-decompile-apk/">用jadx和apktool反编译apk</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于之前开发的计费app做好后一时大意，没有做版本控制，刚好遇上固态硬盘悲剧了（买了才几个月，就挂掉了。SanDisk那边二话不说就帮我换个新的过来，估计是维修的成本太高，懒得修了）。还好，主管那有一份我发给他的试用版app，只能用这个app来反编译获取代码再做版本控制了。</p>
+<p>前前后后一共用了三款反编译工具（<a href="https://github.com/pxb1988/dex2jar" target="_blank" rel="external">dex2jar</a>、<a href="https://github.com/google/enjarify" target="_blank" rel="external">enjarify</a>、<a href="https://github.com/skylot/jadx" target="_blank" rel="external">jadx</a>）。其中dex2jar和enjarify（google出品），对我来说效果都一般，比较多错误，要么就是变量名搞得模棱两可，要么就是方法体添加了许多不必要的代码，资源引用也帮我全部转成了int了。jadx虽然也有部分资源引用变成了int，但其小巧，简单易用，代码完整性最好，最让我满意。</p>
+<p>apk反编译一般分两部分：</p>
+<ul>
+<li>.dex文件反编译成jar（用jadx）</li>
+<li>xml文件反编译（用apktool）</li>
+</ul>
+<h2 id="jadx反编译dex文件"><a href="#jadx反编译dex文件" class="headerlink" title="jadx反编译dex文件"></a>jadx反编译dex文件</h2><ol>
+<li>把需要反编译的apk更改后缀名为.zip，解压缩获取classes.dex</li>
+<li>clone <a href="https://github.com/skylot/jadx.git" target="_blank" rel="external">https://github.com/skylot/jadx.git</a> 或者下载<a href="https://github.com/skylot/jadx的zip文件到本机，解压缩" target="_blank" rel="external">https://github.com/skylot/jadx的zip文件到本机，解压缩</a></li>
+<li>直接运行bin文件夹里面的jadx-gui.bat，打开加载第一步获取到的classes.dex，就完成了反编译<br>（也可以把bin目录设置为系统环境变量Path，进入命令行运行 jadx -d out classes.dex，jadx会在当前目录生成一个out文件夹，里面就是反编译到的java文件）</li>
+</ol>
+<h2 id="反编译获取xml资源文件"><a href="#反编译获取xml资源文件" class="headerlink" title="反编译获取xml资源文件"></a>反编译获取xml资源文件</h2><ol>
+<li><p>把以下代码保存成apktool.bat文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">if &quot;%PATH_BASE%&quot; == &quot;&quot; set PATH_BASE=%PATH%</span><br><span class="line">set PATH=%CD%;%PATH_BASE%;</span><br><span class="line">java -jar -Duser.language=en &quot;%~dp0\apktool.jar&quot; %1 %2 %3 %4 %5 %6 %7 %8 %9</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>到<a href="https://bitbucket.org/iBotPeaches/apktool/downloads" target="_blank" rel="external">https://bitbucket.org/iBotPeaches/apktool/downloads</a>下载apktool_x.x.x.jar文件</p>
+</li>
+<li>确保把上面两个文件放在同一目录下，并把该目录添加到系统环境变量Path中</li>
+<li>cmd中执行 apktool d -f “apk路径” -o “文件保存路径” 即可获得该apk下所有的xml资源文件</li>
+</ol>
+<p>ok，搞掂！！！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-2016-05-24-destroy-activity" class="article article-type-post" itemscope itemprop="blogPost">
   
