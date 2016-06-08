@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android全新布局Constraintlayout初探 | Noddy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言：2016 Google I/O上，google带来了全新的布局方式：约束布局ConstraintLayout，我也在最近试用了一下这种全新的布局方式
+
+ConstraintLayout是什么ConstraintLayout可以说是相对布局RelativeLayout的升级版，它允许我们在layout上设计子控件与子控件之间的位置关系。或许你会说，这不就是RelativeLayout之前一直">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android全新布局Constraintlayout初探">
+<meta property="og:url" content="noddyliu.github.io/2016/06/07/2016-06-07-how-to-use-constraintlayout/index.html">
+<meta property="og:site_name" content="Noddy">
+<meta property="og:description" content="前言：2016 Google I/O上，google带来了全新的布局方式：约束布局ConstraintLayout，我也在最近试用了一下这种全新的布局方式
+
+ConstraintLayout是什么ConstraintLayout可以说是相对布局RelativeLayout的升级版，它允许我们在layout上设计子控件与子控件之间的位置关系。或许你会说，这不就是RelativeLayout之前一直">
+<meta property="og:image" content="noddyliu.github.io/2016/06/07/2016-06-07-how-to-use-constraintlayout/init.png">
+<meta property="og:image" content="noddyliu.github.io/2016/06/07/2016-06-07-how-to-use-constraintlayout/center_layout.gif">
+<meta property="og:image" content="noddyliu.github.io/2016/06/07/2016-06-07-how-to-use-constraintlayout/center_layout.gif">
+<meta property="og:updated_time" content="2016-06-08T02:32:10.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android全新布局Constraintlayout初探">
+<meta name="twitter:description" content="前言：2016 Google I/O上，google带来了全新的布局方式：约束布局ConstraintLayout，我也在最近试用了一下这种全新的布局方式
+
+ConstraintLayout是什么ConstraintLayout可以说是相对布局RelativeLayout的升级版，它允许我们在layout上设计子控件与子控件之间的位置关系。或许你会说，这不就是RelativeLayout之前一直">
+<meta name="twitter:image" content="noddyliu.github.io/2016/06/07/2016-06-07-how-to-use-constraintlayout/init.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Noddy" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Noddy</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">写点代码，读点历史！</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/Android">Android</a></li>
+				        
+							<li><a href="/categories/杂碎">杂碎</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/杂碎/" style="font-size: 10px;">杂碎</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">吃喝顺德人 liu_ja@qq.com</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Noddy</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/avatar.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Noddy</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">写点代码，读点历史！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/杂碎">杂碎</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-2016-06-07-how-to-use-constraintlayout" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/07/2016-06-07-how-to-use-constraintlayout/" class="article-date">
+  	<time datetime="2016-06-07T12:46:09.000Z" itemprop="datePublished">2016-06-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android全新布局Constraintlayout初探
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>前言：2016 Google I/O上，google带来了全新的布局方式：约束布局ConstraintLayout，我也在最近试用了一下这种全新的布局方式</p>
+</blockquote>
+<h4 id="ConstraintLayout是什么"><a href="#ConstraintLayout是什么" class="headerlink" title="ConstraintLayout是什么"></a>ConstraintLayout是什么</h4><p>ConstraintLayout可以说是相对布局RelativeLayout的升级版，它允许我们在layout上设计子控件与子控件之间的位置关系。或许你会说，这不就是RelativeLayout之前一直在干的事情吗？<br>但我们用RelativeLayout时，经常会出现多层布局嵌套，而ConstraintLayout往往只需要一层就可以满足需求，从而提高软件布局渲染的性能。</p>
+<p>例如：</p>
+<p>相对布局RelativeLayout允许我们用以下4个属性来设置view与view之间的位置关系</p>
+<ul>
+<li>layout_toRightOf</li>
+<li>layout_toLeftOf</li>
+<li>layout_toTopOf</li>
+<li>layout_toBottomOf</li>
+</ul>
+<p>然而，约束布局ConstraintLayout带来了众多属性</p>
+<ul>
+<li>layout_constraintTop_toTopOf</li>
+<li>layout_constraintTop_toBottomOf</li>
+<li>layout_constraintBottom_toTopOf</li>
+<li>layout_constraintBottom_toBottomOf</li>
+<li>layout_constraintLeft_toTopOf</li>
+<li>layout_constraintLeft_toBottomOf</li>
+<li>layout_constraintLeft_toLeftOf</li>
+<li>layout_constraintLeft_toRightOf</li>
+<li>layout_constraintRight_toTopOf</li>
+<li>layout_constraintRight_toBottomOf</li>
+<li>layout_constraintRight_toLeftOf</li>
+<li>layout_constraintRight_toRightOf</li>
+<li>……</li>
+</ul>
+<p>这么多属性，中间的constraintXXX又是什么意思呢？不用想了，直接新建一个项目，一探究竟就知道了！</p>
+<h4 id="怎样使用ConstraintLayout"><a href="#怎样使用ConstraintLayout" class="headerlink" title="怎样使用ConstraintLayout"></a>怎样使用ConstraintLayout</h4><ol>
+<li>下载Android Studio 2.2 Preview2（2.1正式版没有该功能，必须安装最新的版本）<br><a href="http://tools.android.com/download/studio/canary/latest/" target="_blank" rel="external">http://tools.android.com/download/studio/canary/latest</a></li>
+<li>新建项目，在build.gradle中添加</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies </span><br><span class="line">&#123;</span><br><span class="line">    compile &apos;com.android.support.constraint:constraint-layout:1.0.0-alpha1&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ok，切换到布局的Design页面，拖动一个ImageView到布局里面，如下图：</p>
+<img src="/2016/06/07/2016-06-07-how-to-use-constraintlayout/init.png" alt="init.png" title="">
+<p>(图)分了两部分，左边为设计预览，右边为蓝图模式</p>
+<p>点击一下左边视图的imageview，会出现4边各有一个小圆和4角各有一个小正方形：小圆手柄（调整手柄）可以调节控件的大小，而正方形手柄（约束手柄）可以调整控件的位置。尝试把4个约束手柄分别拉到界面的边缘，看看有什么情况出现：</p>
+<img src="/2016/06/07/2016-06-07-how-to-use-constraintlayout/center_layout.gif" alt="center_layout.gif" title="">
+<p>Android Studio自动把该imageview居中，来看看xml布局代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;ImageView</span><br><span class="line">            android:src=&quot;@drawable/abc_ic_menu_cut_material&quot;</span><br><span class="line">            android:layout_width=&quot;91dp&quot;</span><br><span class="line">            android:layout_height=&quot;59dp&quot;</span><br><span class="line">            android:id=&quot;@+id/imageView&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;16dp&quot;</span><br><span class="line">            android:layout_marginStart=&quot;16dp&quot;</span><br><span class="line">            android:layout_marginTop=&quot;16dp&quot;</span><br><span class="line">            android:layout_marginRight=&quot;16dp&quot;</span><br><span class="line">            android:layout_marginEnd=&quot;16dp&quot;</span><br><span class="line">            android:layout_marginBottom=&quot;16dp&quot;</span><br><span class="line">            app:layout_constraintLeft_toLeftOf=&quot;@+id/activity_constraint_layout&quot;</span><br><span class="line">            app:layout_constraintTop_toTopOf=&quot;@+id/activity_constraint_layout&quot;</span><br><span class="line">            app:layout_constraintRight_toRightOf=&quot;@+id/activity_constraint_layout&quot;</span><br><span class="line">            app:layout_constraintBottom_toBottomOf=&quot;@+id/activity_constraint_layout&quot;</span><br><span class="line">            /&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到，自动添加了4个ConstraintLayout的属性。还是不太懂，我们再添加一个TextView来试试看：</p>
+<img src="/2016/06/07/2016-06-07-how-to-use-constraintlayout/center_layout.gif" alt="center_layout.gif" title="">
+<p>把TextView放到ImageView下面，会自动把TextView的左右约束与ImageView的左右约束连接起来。我再把TextView的顶部约束和ImageView的底部约束两者连接起来，看看xml代码发生了怎样的变化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">            android:text=&quot;TextView&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot; </span><br><span class="line">            android:id=&quot;@+id/textView&quot;</span><br><span class="line">            android:layout_marginTop=&quot;8dp&quot;</span><br><span class="line">            app:layout_constraintLeft_toLeftOf=&quot;@+id/imageView&quot; </span><br><span class="line">            app:layout_constraintTop_toBottomOf=&quot;@+id/imageView&quot;</span><br><span class="line">            app:layout_constraintRight_toRightOf=&quot;@+id/imageView&quot;</span><br><span class="line">            /&gt;</span><br></pre></td></tr></table></figure>
+<p>多了3个ConstraintLayout的属性。TextView显示在ImageView的正下方。如果我再添加一个layout_constraintBottom_toTopOf属性呢（也就是两者的顶部约束连接）？</p>
+<p>噢！TextView叠加在ImageView的上面。</p>
+<p>原来，constraintXXX的意思是XXX约束在另一个view的什么位置。</p>
+<p>例如控件A定义了app:layout_constraintLeft_toLeftOf=”@+id/控件B”</p>
+<p>说明控件A的左边与控件B的左边位置要一致。</p>
+<p>再定义控件A的app:layout_constraintBottom_toTopOf=”@+id/控件B”</p>
+<p>说明控件A的底部与控件B的顶部位置要一致，言下之意就是A出现在B的上方了。</p>
+<p>结合上面两个属性，A就会出现在B的左上方的位置上。</p>
+<p>试试只添加控件A的app:layout_constraintLeft_toLeftOf=”@+id/控件B”和app:layout_constraintTop_toTopOf=”@+id/imageView”，看看是不是控件A叠加在控件B的上面，有点FrameLayout的味道吧！！！</p>
+<p>其实多动手拖拉一下，就会明白这个全新布局的用法了。对于精细布局，还是蛮有效果的呢！！！</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/27/2016-05-27-decompile-apk/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">用jadx和apktool反编译apk</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016-06-07-how-to-use-constraintlayout" data-title="Android全新布局Constraintlayout初探" data-url="noddyliu.github.io/2016/06/07/2016-06-07-how-to-use-constraintlayout/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"NoddyLiu"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Noddy
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
