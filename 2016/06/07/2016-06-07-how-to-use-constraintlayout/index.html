@@ -18,8 +18,8 @@ ConstraintLayout是什么ConstraintLayout可以说是相对布局RelativeLayout�
 ConstraintLayout是什么ConstraintLayout可以说是相对布局RelativeLayout的升级版，它允许我们在layout上设计子控件与子控件之间的位置关系。或许你会说，这不就是RelativeLayout之前一直">
 <meta property="og:image" content="noddyliu.github.io/2016/06/07/2016-06-07-how-to-use-constraintlayout/init.png">
 <meta property="og:image" content="noddyliu.github.io/2016/06/07/2016-06-07-how-to-use-constraintlayout/center_layout.gif">
-<meta property="og:image" content="noddyliu.github.io/2016/06/07/2016-06-07-how-to-use-constraintlayout/center_layout.gif">
-<meta property="og:updated_time" content="2016-06-08T02:38:22.343Z">
+<meta property="og:image" content="noddyliu.github.io/2016/06/07/2016-06-07-how-to-use-constraintlayout/under_layout.gif">
+<meta property="og:updated_time" content="2016-06-08T02:47:43.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android全新布局Constraintlayout初探">
 <meta name="twitter:description" content="前言：2016 Google I/O上，google带来了全新的布局方式：约束布局ConstraintLayout，我也在最近试用了一下这种全新的布局方式
@@ -83,7 +83,7 @@ ConstraintLayout是什么ConstraintLayout可以说是相对布局RelativeLayout�
 						<li>Tags</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -261,7 +261,7 @@ ConstraintLayout是什么ConstraintLayout可以说是相对布局RelativeLayout�
 <p>Android Studio自动把该imageview居中，来看看xml布局代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;ImageView</span><br><span class="line">            android:src=&quot;@drawable/abc_ic_menu_cut_material&quot;</span><br><span class="line">            android:layout_width=&quot;91dp&quot;</span><br><span class="line">            android:layout_height=&quot;59dp&quot;</span><br><span class="line">            android:id=&quot;@+id/imageView&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;16dp&quot;</span><br><span class="line">            android:layout_marginStart=&quot;16dp&quot;</span><br><span class="line">            android:layout_marginTop=&quot;16dp&quot;</span><br><span class="line">            android:layout_marginRight=&quot;16dp&quot;</span><br><span class="line">            android:layout_marginEnd=&quot;16dp&quot;</span><br><span class="line">            android:layout_marginBottom=&quot;16dp&quot;</span><br><span class="line">            app:layout_constraintLeft_toLeftOf=&quot;@+id/activity_constraint_layout&quot;</span><br><span class="line">            app:layout_constraintTop_toTopOf=&quot;@+id/activity_constraint_layout&quot;</span><br><span class="line">            app:layout_constraintRight_toRightOf=&quot;@+id/activity_constraint_layout&quot;</span><br><span class="line">            app:layout_constraintBottom_toBottomOf=&quot;@+id/activity_constraint_layout&quot;</span><br><span class="line">            /&gt;</span><br></pre></td></tr></table></figure>
 <p>可以看到，自动添加了4个ConstraintLayout的属性。还是不太懂，我们再添加一个TextView来试试看：</p>
-<img src="/2016/06/07/2016-06-07-how-to-use-constraintlayout/center_layout.gif" alt="center_layout.gif" title="">
+<img src="/2016/06/07/2016-06-07-how-to-use-constraintlayout/under_layout.gif" alt="under_layout.gif" title="">
 <p>把TextView放到ImageView下面，会自动把TextView的左右约束与ImageView的左右约束连接起来。我再把TextView的顶部约束和ImageView的底部约束两者连接起来，看看xml代码发生了怎样的变化：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">            android:text=&quot;TextView&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot; </span><br><span class="line">            android:id=&quot;@+id/textView&quot;</span><br><span class="line">            android:layout_marginTop=&quot;8dp&quot;</span><br><span class="line">            app:layout_constraintLeft_toLeftOf=&quot;@+id/imageView&quot; </span><br><span class="line">            app:layout_constraintTop_toBottomOf=&quot;@+id/imageView&quot;</span><br><span class="line">            app:layout_constraintRight_toRightOf=&quot;@+id/imageView&quot;</span><br><span class="line">            /&gt;</span><br></pre></td></tr></table></figure>
 <p>多了3个ConstraintLayout的属性。TextView显示在ImageView的正下方。如果我再添加一个layout_constraintBottom_toTopOf属性呢（也就是两者的顶部约束连接）？</p>
