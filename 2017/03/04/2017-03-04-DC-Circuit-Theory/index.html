@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android Things教程：电气基础之直流电路理论 | Noddy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="译者注：由于本人水平有限，译文中难免会出现概念模糊、晦涩难懂，如果实在没心思看下去，请发挥你的学习能动性，到原文中自行翻译，感谢！！！点这里，直达英文各种长句的世界。
+好了，既然你选择继续往下看，那就一起来学习吧！！！
+译者：Noddy
+地址：直流电路理论
+如果你喜欢本译文，请到项目上star一下，点个赞吧，么么哒！！！
+前言：在电气科学或者电路图中，电压、电流和电阻三者之间的关系统称为欧姆定理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Things教程：电气基础之直流电路理论">
+<meta property="og:url" content="noddyliu.github.io/2017/03/04/2017-03-04-DC-Circuit-Theory/index.html">
+<meta property="og:site_name" content="Noddy">
+<meta property="og:description" content="译者注：由于本人水平有限，译文中难免会出现概念模糊、晦涩难懂，如果实在没心思看下去，请发挥你的学习能动性，到原文中自行翻译，感谢！！！点这里，直达英文各种长句的世界。
+好了，既然你选择继续往下看，那就一起来学习吧！！！
+译者：Noddy
+地址：直流电路理论
+如果你喜欢本译文，请到项目上star一下，点个赞吧，么么哒！！！
+前言：在电气科学或者电路图中，电压、电流和电阻三者之间的关系统称为欧姆定理。">
+<meta property="og:image" content="http://i1.piimg.com/567571/d068fe43f654a46c.gif">
+<meta property="og:image" content="http://i1.piimg.com/567571/51485b01b4d4978b.gif">
+<meta property="og:image" content="http://p1.bqimg.com/567571/b795b66566177e62.gif">
+<meta property="og:image" content="http://i1.piimg.com/567571/cb3f7eebc7d8ce8c.gif">
+<meta property="og:image" content="http://p1.bqimg.com/567571/ab8c4cf16c8b501e.gif">
+<meta property="og:updated_time" content="2017-03-04T15:40:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Things教程：电气基础之直流电路理论">
+<meta name="twitter:description" content="译者注：由于本人水平有限，译文中难免会出现概念模糊、晦涩难懂，如果实在没心思看下去，请发挥你的学习能动性，到原文中自行翻译，感谢！！！点这里，直达英文各种长句的世界。
+好了，既然你选择继续往下看，那就一起来学习吧！！！
+译者：Noddy
+地址：直流电路理论
+如果你喜欢本译文，请到项目上star一下，点个赞吧，么么哒！！！
+前言：在电气科学或者电路图中，电压、电流和电阻三者之间的关系统称为欧姆定理。">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/d068fe43f654a46c.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="Noddy" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Noddy</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">写点代码，读点历史！</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/2016/06/13/MyResume">简历</a></li>
+				        
+							<li><a href="/categories/Android">Android</a></li>
+				        
+							<li><a href="/categories/杂碎">杂碎</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/杂碎/" style="font-size: 10px;">杂碎</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">吃喝顺德人 liu_ja@qq.com</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Noddy</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/avatar.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Noddy</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">写点代码，读点历史！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/2016/06/13/MyResume">简历</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/杂碎">杂碎</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-2017-03-04-DC-Circuit-Theory" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/04/2017-03-04-DC-Circuit-Theory/" class="article-date">
+  	<time datetime="2017-03-04T15:36:14.000Z" itemprop="datePublished">2017-03-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android Things教程：电气基础之直流电路理论
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>译者注：由于本人水平有限，译文中难免会出现概念模糊、晦涩难懂，如果实在没心思看下去，请发挥你的学习能动性，到原文中自行翻译，感谢！！！点<a href="http://www.electronics-tutorials.ws/dccircuits/dcp_1.html" target="_blank" rel="external">这里</a>，直达英文各种长句的世界。</p>
+<p>好了，既然你选择继续往下看，那就一起来学习吧！！！</p>
+<p>译者：Noddy</p>
+<p>地址：<a href="https://github.com/NoddyLiu/study_android_things/blob/master/posts/DC_Circuit_Theory.md" target="_blank" rel="external">直流电路理论</a></p>
+<p>如果你喜欢本译文，请到项目上star一下，点个赞吧，么么哒！！！</p>
+<h1 id="前言：在电气科学或者电路图中，电压、电流和电阻三者之间的关系统称为欧姆定理。"><a href="#前言：在电气科学或者电路图中，电压、电流和电阻三者之间的关系统称为欧姆定理。" class="headerlink" title="前言：在电气科学或者电路图中，电压、电流和电阻三者之间的关系统称为欧姆定理。"></a>前言：在电气科学或者电路图中，电压、电流和电阻三者之间的关系统称为欧姆定理。</h1><p>所有的物质都由原子构成，所有的原子由质子、中子和电子构成。质子带正电荷，中子不带电荷，而电子带负电荷。原子是通过存在于原子核和其外壳中的电子之间的强大吸引力而结合在一起。</p>
+<p>当质子、中子和电子在原子内部时，他们彼此之间和谐稳定地存活着。但当我们试图分离他们时，他们就会骚动起来，开始挥发出一种互相吸引的潜力，该潜力叫电位差。（译者注：打个比方，两个相亲相爱的恋人，硬是因为某些原因不得不分离（例如女方母亲嫌弃男方不单止矮矬，还tm的穷），但两人彼此深爱着对方，这种深厚的情感可以理解为突破各种障碍的动力。觉得还是难以理解？继续硬着头皮往下看。）</p>
+<p>如果我们现在创建闭合电路，这些松散的被分开的电子会因为质子的吸引力，开始移动并漂移回质子，从而产生了电子流。该电子流被称为电流。电子不能自由地流过电路，因为它们移动通过的材料对电子流产生了限制，这种限制被称为电阻。（译者注：所以我们可以这么理解，质子就是男方，电子就是女方，男方有魅力，对女方产生了吸引力，但因为被称为电阻的女方母亲的种种阻挠，两情相悦的人要结合就显得格外艰难，呵呵！！！）</p>
+<p>所有基本的电气或电子电路由三个独立但关系密切的电量组成：电压（v），电流（i）和电阻（Ω）。</p>
+<h2 id="电压"><a href="#电压" class="headerlink" title="电压"></a>电压</h2><p>电压（v）是以电荷形式存储的电源的势能。电压可以被认为是推动电子通过导体的力，并且电压越大，其“推动”电子通过给定电路的能力就越大。由于能量具有做功的能力，势能可以被描述为：围绕电路从一个节点到另一个节点的以电流形式移动电子，该移动过程所需要的焦耳数。</p>
+<p>然后，电路中任何两个点、两端（或称为节点）之间的电压差被称为电势差（p.d.），通常称为电压降。</p>
+<p>两点之间的电势差用电路符号“V”或者小写“v”表示，以伏特测量，尽管能量E，小写“e”有时用于表示产生的电动势（emf，electromotive force）。电压越大，压力（或者推力）就越大，做功的能力也就越大。（译者注：概念有点模糊，没关系，继续往下看，不影响理解的。）</p>
+<p>拥有恒定电压源的电压被成为直流电压（DC Voltage），而随时间周期性变化的电压称为交流电压（AC voltage）。电压以伏特为测量，其中1伏特定义为：使1安培电流通过1欧姆电阻所需要的电压。电压通常用伏特表示，其中前缀用于表示电压量的子倍数，例如：微伏（μV = 10<sup>-6</sup>），毫伏（mV = 10<sup>-3</sup>V）或千伏（kV = 10<sup>3</sup>V）。电压数可正可负。</p>
+<p>电池或电源主要用于在电子电路和系统中产生稳定的直流（D.C.）电压，例如5v，12v，24v等，而交流（A.C.）电压可用于家用和工业电源、照明以及电力传输。英国的电源电压目前为230V交流电，美国是110V交流电。（译者注：中国大陆普遍是220V交流电）</p>
+<p>通用电子电路在1.5V到24V之间的低压直流电池电源上工作。恒定电压源的电路符号通常用电池符号，带有表示极性方向的正极+和负极-来表示。交流电压源的电路符号是用内部具有正弦波的圆来表示。</p>
+<h2 id="电压符号"><a href="#电压符号" class="headerlink" title="电压符号"></a>电压符号</h2><p><img src="http://i1.piimg.com/567571/d068fe43f654a46c.gif" alt="image"></p>
+<p>可以用水箱和电压源来做个类比。水箱出水口的上方水位越高（译者注：水箱的出水口在水箱的最下方），水的压力就越大，随之释放的能量就越多，同理，电压越高，随之释放更多的电子，势能也就越大了。</p>
+<p>电压总是被测量为电路中任何两点之间的差，并且这两个点之间的电压通常被称为“电压降”。注意了，电压可以存在于没有电流的电路上，但是电流不能在没有电压的情况下存在，因此任何电压源，无论DC或AC，是喜欢开路或者半开路电路条件，但是讨厌任何短路条件，因为这会破坏它。（译者注：开路情况下，电路断开，电路两端有电压但没有电流通过；半开路情况，达到某些外界条件下，电路会闭合或者断开电路；短路情况下，电流会变得异常巨大，会直接破坏电路。如果不理解，继续往下看吧）</p>
+<h2 id="电流"><a href="#电流" class="headerlink" title="电流"></a>电流</h2><p>电流（I），表示电荷的移动或流动，并且以安培，符号i为单位测量其强度。电流是由电压源“推动”电路周围的电子，令电子（原子中的负粒子）连续和均匀地流动（或称为漂移）。实际上，电子从电源的负（-ve）端子流向正（+ ve）端子，为了便于电路理解，常规电流假定电流从正端流向负端。（译者注：还记得本文前面打的情侣比方吗？女孩（原子中的电子）由于男孩的（原子中的质子）魅力（电压）推动，女孩有着嫁给男孩的强烈愿望（类似电子的流动）,也就是说，带负电荷的电子，会流动到带正电荷的质子中，但往往为了便于理解，会认为电流从正极流向负极）</p>
+<p>通常在电路图中，通过电路的电流通常具有与符号I或小写i相关联的箭头，用来指示电流的实际方向。然而，该箭头通常指示常规电流的流动方向，而不必指示实际流动的方向。</p>
+<h2 id="常规电流"><a href="#常规电流" class="headerlink" title="常规电流"></a>常规电流</h2><p><img src="http://i1.piimg.com/567571/51485b01b4d4978b.gif" alt="image"> 通常地，电路周围的正电荷，会从正极流动到负极。左图展示了正电荷闭合电路的运动：围绕电池的正极端子流过电路，并返回到电池的负极端子。这种电流从正极流到负极，通常称为常规电流。</p>
+<p>这是发现电流期间选用的惯例：电流的方向被认为在电路中流动。为了延续这种思路，在所有电路图和原理图中，用诸如二极管和晶体管等元件的符号上所示的箭头指向常规电流的方向。（译者注：二极管和晶体管暂时不需要理解，有概念就行）</p>
+<p>因此常规电流流动展示了电流从正极到负极的流动过程，其方向与电子的实际流动方向相反。（译者注：下一节就是介绍电子的流动）</p>
+<h2 id="电子流动"><a href="#电子流动" class="headerlink" title="电子流动"></a>电子流动</h2><p><img src="http://p1.bqimg.com/567571/b795b66566177e62.gif" alt="image"> 围绕电路的电子，其流动方向与常规电流的流动方向正好相反，为负极流到正极。在由电子组成的电路中，其流动的实际电流是由电池的负极（阴极）开始流动，并返回到电池的正极（阳极）。（译者注：再一次证实了本文文面提到的电子实际是由负到正，但为了方便理解，会认为电流从正到负）</p>
+<p>这是因为电子带负电荷，会因此被吸引到正极（译者注：带正极的质子吸引带负极的电子，让电子漂移到质子中）。这种电子的流动被称为电子流。因此，电子实际上在电路周围从负端流向正端。</p>
+<p>常规电流和电子流都被许多教科书所使用。事实上，只要电路中电流的流动使用保持一致，用常规电流或者电子流来表示电流方向都没有什么区别。<br>电流的方向并不影响电路中电流的作用。一般来说，更容易理解常规电流—从正极到负极。</p>
+<p>在电子电路中，电流源是提供指定量的电流（例如1A，5A，10A等）的电路元件，其中恒定电流源的电路符号，用具有指示其方向的箭头的圆圈来表示。</p>
+<p>电流以安培为单位来测量，安培定义为在一秒钟内（时间t以秒计算），通过电路中的某一点的电子或电荷数（电荷数Q以库伦计算）。</p>
+<p>电流通常用安培来表示，其前缀用于表示电流量的子倍数，例如微安（μA= 10<sup>-6</sup>A）或毫安（mA = 10<sup>-3</sup>A）。注意，电流可以是正值或负值，这取决于其流动的方向。</p>
+<p>向同一个方向流动的电流称为直流电（D.C.）,而在电路中来回交替的电流称为交流电（A.C.）。当电压源连接到电路时，无论是直流电还是交流电，其“流动”取决于电路中的电阻和推动电路的电压源。（译者注：也就是说，直流电和交流电，都会受限于电阻和电压的大小）</p>
+<p>此外，由于交流电（和电压）是周期性的并且随时间变化，其“有效”电流值（RMS，符号I<sub>rms</sub>，均方根值）产生等效于直流电平均功率（符号I<sub>average</sub>）的损耗。电流和电压更好相反，它们喜欢短路或者闭路电路条件，但讨厌开路条件，因为开路中，没有电流流过。</p>
+<p>再次用水箱来做个类比，电流等效于通过水箱管道的水流量，流量在整个管道中是相同的。水流越快，电流就越大。注意了，电流不能存在于没有电压中，因此任何电流源，无论DC或AC都喜欢短路或半短路条件，但讨厌任何开路条件，因为开路阻止了电流的流动。</p>
+<h2 id="电阻"><a href="#电阻" class="headerlink" title="电阻"></a>电阻</h2><p>电阻（R）是材料抵抗或防止电流流动的能力，或更具体地说，是阻碍电路内电荷流动的能力，我们把拥有这种完美能力的电路元件称为“电阻器”。</p>
+<p>电阻是以欧姆测量的电路元件，用希腊符号（Ω, Omega）表示，前缀用于表示千欧姆（kΩ=10<sup>3</sup>Ω）和兆欧姆（MΩ=10<sup>6</sup>Ω）。注意，电阻值不能为负值，只能为正值。</p>
+<h2 id="电阻符号"><a href="#电阻符号" class="headerlink" title="电阻符号"></a>电阻符号</h2><p><img src="http://i1.piimg.com/567571/cb3f7eebc7d8ce8c.gif" alt="image"></p>
+<p>一个电阻器所具有的电阻量由通过该电阻器的电流及其两端的电压的关系确定，以此来确定该电路元件是“良导体”-低电阻，还是“不良导体”-高电阻。低电阻，例如1Ω或更小值意味着电路是由诸如铜、铝或碳等材料制成的良好导体，而高电阻，1MΩ或更高数值意味着电路是由诸如玻璃、瓷器或塑料等绝缘材料制成的不良导体。</p>
+<p>另一方面，诸如硅或锗等“半导体”，是一种其电阻为介乎导体和绝缘体两者之间的材料，因此被命名为“半导体”。半导体可用于制造二极管和晶体管等元器件。</p>
+<p>电阻从本质上可以分为线性或非线性的。线性电阻遵循欧姆定律，因为电阻器两端的电压与通过它的电流成线性比例。非线性电阻，不遵守欧姆定律，但其两端的电压降与电流的某些功率成正比。</p>
+<p>电阻是纯粹的,不受频率交流阻抗影响的电阻等于其直流电阻,因此其值不可能是负的。记住，电阻值总是正值，永远不会是负值。（译者注：直流电路中，电阻是起到阻碍电流的作用，而在交流电路中，除了电阻会阻碍电流外，电容和电感也会阻碍电流的流动，这两样元器件称为电抗，电抗和电阻组成成阻抗。交流电路中，阻抗的值不是固定的，而是随着频率的变化而变化。何为频率，就是xxHZ，例如我国交流电频率为50HZ，可以理解为，你家里的交流电，其电流流动方向会在1s（秒）中变换50次）</p>
+<p>电阻器被归类为被动电路元件，因此不能供电或储存能量。相反地，电阻器以热和光的表现形式来吸收功率。无论电压极性和电流方向如何，电阻中的功率始终为正值。</p>
+<p>对于非常低的电阻值，例如毫欧姆（mΩ），有时使用电阻的倒数（1/R）而不是电阻（R）来表示电阻值来得更容易。电阻的倒数称为电导，符号（G），其表示导体或器件导电的能力。</p>
+<p>换句话说，电导表示电流流动的容易性。高电导值意味着是良好的导体，例如铜；而低电导值意味着不良导体，例如木材。电导的标准测量单位是Siemen（西门子），符号（S）。</p>
+<p>电导单位是mho（欧姆ohm的反向拼写），用翻转的欧姆符号℧表示。功率也可以使用电导表示为：p=i<sup>2</sup>/G=v<sup>2</sup>G （G为电导的符号）。</p>
+<p>在恒定电阻（R）的电路中，电压（v）和电流（i）之间的关系，将产生如下图所示的斜率等于电阻值的直线i-v关系。</p>
+<p><img src="http://p1.bqimg.com/567571/ab8c4cf16c8b501e.gif" alt="image"></p>
+<h2 id="本文总结"><a href="#本文总结" class="headerlink" title="本文总结"></a>本文总结</h2><p>（译者注：如果你对前文各种名词还是一头雾水，那么以下部分你能读懂99.99%，可以忘掉前文的模糊概念，这并不影响你对直流电路理论的理解）</p>
+<p>相信现在的你对电压、电流和电阻之间的密切关系有着一定的了解。电压、电流和电阻之间的关系形成欧姆定律的基础。在固定电阻的线性电路中，如果增加电压，电流就会上升，类似地，如果降低电压，电流就会下降。这就意味着，电压高，则电流高；电压低，则电流低。</p>
+<p>同样地，如果我们固定电压，增加电阻，电流就会下降；如果减小电阻，电流就会上升。这意味着，电阻大，则电流低，电阻小，则电流高。</p>
+<p>因此，我们可以看出电路中电流与电压成正比（∝），（V↑导致I↑），但与电阻成反比（1/∝），因为（R↑导致I↓）。</p>
+<p>下面给出这三个单位的基本概述：</p>
+<ul>
+<li>电压或电位差是用来测量电路中两点之间的势能，通常被称为“电压降”。</li>
+<li>当电压源连接到闭合电路时，电压将产生围绕电路流动的电流。</li>
+<li>在直流电压源中，符号+ve（正）和-ve（负）用于表示电源的极性。</li>
+<li>电压以“伏特”测量，用符号“V”表示电压，“E”表示能量。</li>
+<li>电流是由电子流和通过电路的空穴流组合而成。（译者注：空穴，按我理解，就是一个原子中失去了一个电子后，变成了一个质子，叫做空穴）</li>
+<li>电流是电路周围的连续均匀的电荷流，以“安培”测量，并用符号“I”表示。</li>
+<li>电流与电压成正比（I ∝ V）</li>
+<li>交流电流的有效值（rms，均方根值）具有与流过电阻元件的直流电流相同的平均功率损耗。</li>
+<li>电阻是在电路中阻碍电流流动。</li>
+<li>低电阻值意味着是导体，高电阻值意味着是绝缘体。</li>
+<li>电流与电阻成反比（ I 1/∝ R ）</li>
+<li>电阻以“欧姆”测量，单位为希腊符号“Ω”，用字母“R”表示。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>量词</th>
+<th>符号</th>
+<th>单位</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电压</td>
+<td>V或E</td>
+<td>伏特</td>
+<td>V</td>
+</tr>
+<tr>
+<td>电流</td>
+<td>I</td>
+<td>安培</td>
+<td>A</td>
+</tr>
+<tr>
+<td>电阻</td>
+<td>R</td>
+<td>欧姆</td>
+<td>Ω</td>
+</tr>
+</tbody>
+</table>
+<p>下一篇，我们将讨论<a href="https://github.com/NoddyLiu/study_android_things/blob/master/posts/Ohms_Law.md" target="_blank" rel="external">欧姆定律</a>，它是一个解释电路中电压、电流和电阻之间关系的数学方程，是电子和电气工程的基础。欧姆定律定义为：V = I * R。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/13/MyResume/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">简历</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2017-03-04-DC-Circuit-Theory" data-title="Android Things教程：电气基础之直流电路理论" data-url="noddyliu.github.io/2017/03/04/2017-03-04-DC-Circuit-Theory/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"NoddyLiu"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Noddy
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
